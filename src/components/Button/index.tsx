@@ -6,6 +6,7 @@ import "./Button.scss";
 interface ButtonProps {
   onClick(rowParam: number, colParam: number): (...args: any[]) => void;
   onContext(rowParam: number, colParam: number): (...args: any[]) => void;
+  red?: boolean;
   row: number;
   col: number;
   state: CellState;
@@ -13,6 +14,7 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({
+  red,
   row,
   col,
   state,
@@ -45,7 +47,7 @@ const Button: React.FC<ButtonProps> = ({
     <div
       className={`Button ${
         state === CellState.Visible ? "visible" : ""
-      } value-${value}`}
+      } value-${value} ${red ? "red" : ""}`}
       onClick={onClick(row, col)}
       onContextMenu={onContext(row, col)}
     >
